@@ -38,13 +38,13 @@ class Transaction extends Model
 
     public static function scopeWhereUserParticipated($query, User $user)
     {
-        return $query->where(function($query) use ($user) {
+        return $query->where(function ($query) use ($user) {
             return $query->where('payer_id', $user->id)
                 ->orWhere('payee_id', $user->id);
         });
     }
 
-    public static function makeDeposit(Money $money, User $payee) : Transaction
+    public static function makeDeposit(Money $money, User $payee): Transaction
     {
         $transaction = new Transaction();
 

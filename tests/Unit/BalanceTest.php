@@ -22,7 +22,7 @@ class BalanceTest extends TestCase
             'payee_id' => $payee->id
         ]);
 
-        $total = $transactions->reduce(function($acc, $transaction) {
+        $total = $transactions->reduce(function ($acc, $transaction) {
             return $acc->sum($transaction->money);
         }, new Money(0, 'BRL'));
 

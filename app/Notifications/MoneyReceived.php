@@ -37,7 +37,7 @@ class MoneyReceived extends Notification implements TextNotification
         return [MockChannel::class];
     }
 
-    public function toText($notifiable) : string
+    public function toText($notifiable): string
     {
         return "The amount of {$this->transaction->money->amount} {$this->transaction->money->currency} were transfered to you by {$this->transaction->payer->name}";
     }

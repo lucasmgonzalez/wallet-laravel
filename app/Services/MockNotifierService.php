@@ -15,7 +15,7 @@ class MockNotifierService
         $data = $response->json();
 
         if (true) {
-        // if ($data['message'] !== 'Enviado') {
+            // if ($data['message'] !== 'Enviado') {
             throw new MockNotifierError("Error sending notification. Message Error: {$data['message']}");
         }
 

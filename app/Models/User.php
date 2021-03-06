@@ -28,7 +28,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function balance($forceRecalculation = false) : Balance
+    public function balance($forceRecalculation = false): Balance
     {
         if (!isset($this->balance) || $forceRecalculation) {
             $this->balance = Balance::buildFromUser($this);
@@ -37,12 +37,12 @@ class User extends Authenticatable
         return $this->balance;
     }
 
-    public function isJuridicalPerson() : bool
+    public function isJuridicalPerson(): bool
     {
         return strlen($this->cpf_cnpj) === 14;
     }
 
-    public function isNaturalPerson() : bool
+    public function isNaturalPerson(): bool
     {
         return strlen($this->cpf_cnpj) === 11;
     }

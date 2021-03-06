@@ -15,7 +15,7 @@ class MoneyCast implements CastsAttributes
 
     public function set($model, $key, $value, $attributes)
     {
-        if (! $value instanceof Money) {
+        if (!$value instanceof Money) {
             throw new InvalidArgumentException('The given value is not a Money instance');
         }
 

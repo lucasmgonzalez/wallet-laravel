@@ -15,12 +15,12 @@ class BalanceSnapshot {
         $this->created_at = $created_at ?? Carbon::now();
     }
 
-    public static function getUserSnapshotKey(User $user) : string
+    public static function getUserSnapshotKey(User $user): string
     {
         return  "balance_snapshot_{$user->id}";
     }
 
-    public static function get(string $key) : BalanceSnapshot
+    public static function get(string $key): BalanceSnapshot
     {
         $data = Cache::get($key, [
             'balance' => new Balance(new Money(0)),

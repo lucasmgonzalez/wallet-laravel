@@ -17,8 +17,8 @@ class TransactionTest extends TestCase
     public function testCanMakeTransaction()
     {
         $users = User::factory()->count(15)->create();
-        $payer = $users->first(fn ($user) => $user->id === 4 );
-        $payee = $users->first(fn ($user) => $user->id === 15 );
+        $payer = $users->first(fn ($user) => $user->id === 4);
+        $payee = $users->first(fn ($user) => $user->id === 15);
 
         // Make a deposit to payer
         Transaction::makeDeposit(new Money(100), $payer);

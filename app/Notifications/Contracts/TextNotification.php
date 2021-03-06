@@ -4,5 +4,5 @@ namespace App\Notifications\Contracts;
 
 interface TextNotification
 {
-    public function toText($notifiable) : string;
+    public function toText($notifiable): string;
 }

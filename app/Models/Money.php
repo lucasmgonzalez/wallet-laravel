@@ -17,13 +17,13 @@ class Money implements Castable
         $this->currency = $currency;
     }
 
-    public function equalsTo(Money $money) : bool
+    public function equalsTo(Money $money): bool
     {
         return $this->hasSameCurrency($money)
             && $this->amount === $money->amount;
     }
 
-    public function lessThan(Money $money) : bool
+    public function lessThan(Money $money): bool
     {
         if (!$this->hasSameCurrency($money)) {
             throw new Exception('You can only operate with money with the same currency');
@@ -32,7 +32,7 @@ class Money implements Castable
         return $this->amount < $money->amount;
     }
 
-    public function greaterThan(Money $money) : bool
+    public function greaterThan(Money $money): bool
     {
         if (!$this->hasSameCurrency($money)) {
             throw new Exception('You can only operate with money with the same currency');
@@ -41,12 +41,12 @@ class Money implements Castable
         return $this->amount > $money->amount;
     }
 
-    public function hasSameCurrency(Money $money) : bool
+    public function hasSameCurrency(Money $money): bool
     {
         return $this->currency === $money->currency;
     }
 
-    public function sum(Money $money) : Money
+    public function sum(Money $money): Money
     {
         if (!$this->hasSameCurrency($money)) {
             throw new Exception('You can only operate with money with the same currency');
@@ -57,7 +57,7 @@ class Money implements Castable
         return new Money($newAmount, $this->currency);
     }
 
-    public function subtract(Money $money) : Money
+    public function subtract(Money $money): Money
     {
         if (!$this->hasSameCurrency($money)) {
             throw new Exception('You can only operate with money with the same currency');

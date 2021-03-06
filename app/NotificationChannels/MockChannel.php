@@ -11,7 +11,8 @@ class MockChannel
 {
     protected MockNotifierService $service;
 
-    public function __construct(MockNotifierService $service) {
+    public function __construct(MockNotifierService $service)
+    {
         $this->service = $service;
     }
 

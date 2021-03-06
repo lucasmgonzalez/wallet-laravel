@@ -13,12 +13,12 @@ class Balance implements Arrayable
         $this->money = $money;
     }
 
-    public static function createFromArray(array $data) : Balance
+    public static function createFromArray(array $data): Balance
     {
         return new static(new Money($data['amount'], $data['currency']));
     }
 
-    public function toArray() : array
+    public function toArray(): array
     {
         return [
             'amount' => $this->money->amount,
@@ -26,7 +26,7 @@ class Balance implements Arrayable
         ];
     }
 
-    public static function buildFromUser(User $user) : Balance
+    public static function buildFromUser(User $user): Balance
     {
         $snapshotKey = BalanceSnapshot::getUserSnapshotKey($user);
 
@@ -44,10 +44,10 @@ class Balance implements Arrayable
         // Calculate current money amount
         if ($transactions->count() > 0) {
             $money = $transactions->reduce(
-                function (Money $acc, Transaction $transaction) use ($user) : Money{
+                function (Money $acc, Transaction $transaction) use ($user): Money {
                     if ($transaction->payee->id === $user->id) {
                         return $acc->sum($transaction->money);
-                    }else if ($transaction->payer->id === $user->id) {
+                    } else if ($transaction->payer->id === $user->id) {
                         return $acc->subtract($transaction->money);
                     }
                 },

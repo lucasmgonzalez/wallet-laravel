@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class BalanceController extends Controller
 {
-    public function __invoke(User $user) {
+    public function __invoke(User $user)
+    {
         return $user->balance();
     }
 }
