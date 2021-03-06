@@ -10,8 +10,10 @@ class BaseException extends Exception
     public function render(Request $request)
     {
         $content = $request->expectsJson()
-            ? json_encode(['type' => static::class, 'message' => $this->message])
-            : $this->message;
+            ? json_encode([
+                'type' => static::class,
+                'message' => $this->message
+            ]) : $this->message;
 
         return response($content, 422);
     }
