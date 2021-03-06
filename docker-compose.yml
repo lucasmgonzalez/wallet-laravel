@@ -14,6 +14,10 @@ services:
       - "DB_DATABASE=homestead"
       - "DB_USER=homestead"
       - "DB_PASSWORD=secret"
+      - "CACHE_DRIVER=redis"
+      - "REDIS_HOST=redis"
+      - "REDIS_PASSWORD=null"
+      - "REDIS_PORT=6379"
     ports:
       - 8080:80
 
@@ -29,5 +33,12 @@ services:
       - "MYSQL_ROOT_PASSWORD=secret"
     ports:
       - "33061:3306"
+  redis:
+    image: redis:latest
+    volumes:
+      - redisdata:/data
+    ports:
+      - "63790:6379"
 volumes:
   dbdata:
+  redisdata:

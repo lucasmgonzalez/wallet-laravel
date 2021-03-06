@@ -15,14 +15,10 @@ WORKDIR /var/www
 
 # Installing and enabling packages php mods
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends\
-        mariadb-client \
-        zlib1g-dev \
-        libzip-dev && \
-    docker-php-ext-install \
-        pdo_mysql \
-        opcache \
-        zip
+    apt-get install -y mariadb-client zlib1g-dev libzip-dev && \
+    docker-php-ext-install pdo_mysql opcache zip && \
+    pecl install redis && \
+    docker-php-ext-enable redis
 
 # Configuring Apache
 ENV APACHE_DOCUMENT_ROOT /var/www/public
