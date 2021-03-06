@@ -13,7 +13,7 @@ class BalanceTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testCanRetrieveBalanceFromUser()
+    public function test_can_retrieve_balance_from_user()
     {
         [$payer, $payee] = User::factory()->count(2)->create();
 
@@ -31,7 +31,7 @@ class BalanceTest extends TestCase
         $this->assertTrue($total->equalsTo($balance->money));
     }
 
-    public function testCanCreateFromArray()
+    public function test_can_create_from_array()
     {
         $data = ['amount' => 100, 'currency' => 'BRL'];
 
@@ -41,7 +41,7 @@ class BalanceTest extends TestCase
         $this->assertEquals($data['currency'], $balance->money->currency);
     }
 
-    public function testCanTransformToArray()
+    public function test_can_transform_to_array()
     {
         $balance = new Balance(new Money(100, 'BRL'));
 

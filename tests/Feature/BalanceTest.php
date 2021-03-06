@@ -13,7 +13,7 @@ class BalanceTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testCanRetrieveUserBalance()
+    public function test_can_retrieve_user_balance()
     {
         $user = User::factory()->create();
 

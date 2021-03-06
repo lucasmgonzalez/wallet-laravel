@@ -61,7 +61,7 @@ class TransactionTest extends TestCase
     }
 
     // Default payload
-    public function testCanMakeTransaction()
+    public function test_can_make_transaction()
     {
         $this->mockMockTransactionAuthorizerSuccessfulResponse();
         $this->mockMockNotifierSuccessfulResponse();
@@ -88,7 +88,7 @@ class TransactionTest extends TestCase
     }
 
     // User can send money to User
-    public function testNaturalPersonCanMakeTransactionToNaturalPerson()
+    public function test_natural_person_can_make_transaction_to_natural_person()
     {
         $this->mockMockTransactionAuthorizerSuccessfulResponse();
         $this->mockMockNotifierSuccessfulResponse();
@@ -113,7 +113,7 @@ class TransactionTest extends TestCase
     }
 
     // User can send money to Business
-    public function testNaturalPersonCanMakeTransactionToJuridicalPerson()
+    public function test_natural_person_can_make_transaction_to_juridical_person()
     {
         $this->mockMockTransactionAuthorizerSuccessfulResponse();
         $this->mockMockNotifierSuccessfulResponse();
@@ -139,7 +139,7 @@ class TransactionTest extends TestCase
     }
 
     // Business cannot send money
-    public function testJuridicalPersonCannotMakeTransaction()
+    public function test_juridical_person_cannot_make_transaction()
     {
         $this->mockMockTransactionAuthorizerSuccessfulResponse();
         $this->mockMockNotifierSuccessfulResponse();
@@ -164,7 +164,7 @@ class TransactionTest extends TestCase
         $response->assertJson(['type' => UserTypeCannotTransferMoney::class]);
     }
 
-    public function testUserCannotMakeTransactionWithInsufficientBalance()
+    public function test_user_cannot_make_transaction_with_insufficient_balance()
     {
         $this->mockMockTransactionAuthorizerSuccessfulResponse();
         $this->mockMockNotifierSuccessfulResponse();
@@ -181,7 +181,7 @@ class TransactionTest extends TestCase
         $response->assertJson(['type' => InsufficientBalance::class]);
     }
 
-    public function testThrowsTransactionNotAuthorizedOnServiceDisapproval()
+    public function test_throws_transaction_not_authorized_on_service_disapproval()
     {
         $this->mockMockTransactionAuthorizerErrorResponse();
         $this->mockMockNotifierSuccessfulResponse();
@@ -205,7 +205,7 @@ class TransactionTest extends TestCase
         $response->assertJson(['type' => TransactionNotAuthorized::class]);
     }
 
-    public function testDoesntThrowsMockNotifierErrorOnServiceError()
+    public function test_doesnt_throws_error_on_notifier_service_error()
     {
         $this->mockMockTransactionAuthorizerSuccessfulResponse();
         $this->mockMockNotifierErrorResponse();

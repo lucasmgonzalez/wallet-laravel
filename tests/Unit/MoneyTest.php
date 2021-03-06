@@ -8,21 +8,21 @@ use PHPUnit\Framework\TestCase;
 
 class MoneyTest extends TestCase
 {
-    public function testFunctionHasSameCurrency()
+    public function test_function_has_same_currency()
     {
         $money = new Money(10, 'BRL');
 
         $this->assertTrue($money->hasSameCurrency($money));
     }
 
-    public function testFunctionEqualsTo()
+    public function test_function_equals_to()
     {
         $money = new Money(10, 'BRL');
 
         $this->assertTrue($money->equalsTo($money));
     }
 
-    public function testFunctionSum()
+    public function test_function_sum()
     {
         $money1 = new Money(10, 'BRL');
         $money2 = new Money(5, 'BRL');
@@ -33,7 +33,7 @@ class MoneyTest extends TestCase
         $this->assertEquals('BRL', $sum->currency);
     }
 
-    public function testCannotSumWithDifferentCurrency()
+    public function test_cannot_sum_with_different_currency()
     {
         $this->expectException(Exception::class);
 
@@ -43,7 +43,7 @@ class MoneyTest extends TestCase
         $money1->sum($money2);
     }
 
-    public function testFunctionSubtract()
+    public function test_function_subtract()
     {
         $money1 = new Money(10, 'BRL');
         $money2 = new Money(5, 'BRL');
@@ -54,7 +54,7 @@ class MoneyTest extends TestCase
         $this->assertEquals('BRL', $subtraction->currency);
     }
 
-    public function testCannotSubtractWithDifferentCurrency()
+    public function test_cannot_subtract_with_different_currency()
     {
         $this->expectException(Exception::class);
 
@@ -64,7 +64,7 @@ class MoneyTest extends TestCase
         $money1->sum($money2);
     }
 
-    public function testFunctionLessThan()
+    public function test_function_less_than()
     {
         $money1 = new Money(10, 'BRL');
         $money2 = new Money(5, 'BRL');
@@ -73,7 +73,7 @@ class MoneyTest extends TestCase
         $this->assertTrue($money2->lessThan($money1));
     }
 
-    public function testFunctionGreaterThan()
+    public function test_function_greater_than()
     {
         $money1 = new Money(10, 'BRL');
         $money2 = new Money(5, 'BRL');
