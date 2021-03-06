@@ -4,7 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class MoneyCannotBeNegative extends BaseException
+class MoneyCannotBeNegative extends Exception
 {
-    //
+    use ApiRenderable;
 }

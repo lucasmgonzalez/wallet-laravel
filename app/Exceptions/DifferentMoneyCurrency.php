@@ -4,7 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class DifferentMoneyCurrency extends BaseException
+class DifferentMoneyCurrency extends Exception
 {
-    //
+    use ApiRenderable;
 }

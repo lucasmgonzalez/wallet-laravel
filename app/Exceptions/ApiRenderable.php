@@ -5,7 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Http\Request;
 
-class BaseException extends Exception
+trait ApiRenderable
 {
     public function render(Request $request)
     {

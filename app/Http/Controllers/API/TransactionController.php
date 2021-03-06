@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Exceptions\InsufficientBalance;
+use App\Exceptions\MockTransactionAuthorizerError;
 use App\Exceptions\TransactionNotAuthorized;
 use App\Exceptions\UserTypeCannotTransferMoney;
 use App\Http\Controllers\Controller;
@@ -38,7 +39,11 @@ class TransactionController extends Controller
 
         // Check Transaction Authorizer Service
         $authorizerService = app(MockTransactionAuthorizerService::class);
-        $authorizerService->authorize($transaction);
+        try {
+            $authorizerService->authorize($transaction);
+        } catch (MockTransactionAuthorizerError $e) {
+            throw new TransactionNotAuthorized();
+        }
 
         // Save Transaction
         $transaction->save();

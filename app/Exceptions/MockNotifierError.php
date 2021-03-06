@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class MockNotifierError extends BaseException
+class MockNotifierError extends Exception
 {
+    use ApiRenderable;
 }

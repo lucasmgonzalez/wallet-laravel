@@ -4,7 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 
-class MockTransactionAuthorizerError extends BaseException
+class MockTransactionAuthorizerError extends Exception
 {
-    //
+
 }
