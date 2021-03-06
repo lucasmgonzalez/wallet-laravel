@@ -19,7 +19,6 @@ class TransactionController extends Controller
     {
         $data = $request->validated();
 
-        $amount = $data['value'];
         $payer = User::find($data['payer']);
 
         $transaction = new Transaction();
@@ -39,10 +38,7 @@ class TransactionController extends Controller
 
         // Check Transaction Authorizer Service
         $authorizerService = app(MockTransactionAuthorizerService::class);
-
-        if (!$authorizerService->authorize($transaction)) {
-            throw new TransactionNotAuthorized();
-        }
+        $authorizerService->authorize($transaction);
 
         // Save Transaction
         $transaction->save();

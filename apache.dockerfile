@@ -14,11 +14,16 @@ COPY --from=build /app /var/www
 WORKDIR /var/www
 
 # Installing and enabling packages php mods
-RUN apt-get update && \
-    apt-get install -y mariadb-client zlib1g-dev libzip-dev && \
-    docker-php-ext-install pdo_mysql opcache zip && \
-    pecl install redis && \
-    docker-php-ext-enable redis
+RUN apt-get update && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+    && docker-php-ext-install -j$(nproc) iconv \
+    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install pdo_mysql pdo mysqli opcache \
+    && pecl install redis \
+    && docker-php-ext-enable redis
 
 # Configuring Apache
 ENV APACHE_DOCUMENT_ROOT /var/www/public

@@ -9,10 +9,20 @@ class Transaction extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
     protected $casts = [
         'money' => Money::class
     ];
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'amount',
         'currency',

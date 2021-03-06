@@ -13,11 +13,22 @@ class Balance implements Arrayable
         $this->money = $money;
     }
 
+    /**
+     * Create instance of Balance from a data array
+     *
+     * @param array $data
+     * @return Balance
+     */
     public static function createFromArray(array $data): Balance
     {
         return new static(new Money($data['amount'], $data['currency']));
     }
 
+    /**
+     * Cast Balance to array
+     *
+     * @return array
+     */
     public function toArray(): array
     {
         return [
@@ -26,6 +37,12 @@ class Balance implements Arrayable
         ];
     }
 
+    /**
+     * Calculate all transactions to create a Balance instance for an User
+     *
+     * @param User $user
+     * @return Balance
+     */
     public static function buildFromUser(User $user): Balance
     {
         $snapshotKey = BalanceSnapshot::getUserSnapshotKey($user);

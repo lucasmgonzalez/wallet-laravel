@@ -5,7 +5,8 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 
-class BalanceSnapshot {
+class BalanceSnapshot
+{
     public Balance $balance;
     public Carbon $created_at;
 
@@ -15,11 +16,23 @@ class BalanceSnapshot {
         $this->created_at = $created_at ?? Carbon::now();
     }
 
+    /**
+     * Creating a balance cache key for given User
+     *
+     * @param User $user
+     * @return string
+     */
     public static function getUserSnapshotKey(User $user): string
     {
         return  "balance_snapshot_{$user->id}";
     }
 
+    /**
+     * Retrieve a BalanceSnapshot instance from cache
+     *
+     * @param string $key
+     * @return BalanceSnapshot
+     */
     public static function get(string $key): BalanceSnapshot
     {
         $data = Cache::get($key, [
@@ -33,6 +46,14 @@ class BalanceSnapshot {
         );
     }
 
+    /**
+     * Save a BalanceSnapshot instance to cache
+     *
+     * @param string $key
+     * @param Balance $balance
+     * @param Carbon $created_at
+     * @return void
+     */
     public static function set(string $key, Balance $balance, Carbon $created_at)
     {
         return Cache::put($key, [

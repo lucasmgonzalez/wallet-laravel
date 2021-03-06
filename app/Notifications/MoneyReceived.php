@@ -37,18 +37,30 @@ class MoneyReceived extends Notification implements TextNotification
         return [MockChannel::class];
     }
 
+    /**
+     * Get text representation of the notification
+     *
+     * @param mixed $notifiable
+     * @return string
+     */
     public function toText($notifiable): string
     {
         return "The amount of {$this->transaction->money->amount} {$this->transaction->money->currency} were transfered to you by {$this->transaction->payer->name}";
     }
 
-    // public function toMail($notifiable)
-    // {
-    //     return (new MailMessage)
-    //                 ->line('The introduction to the notification.')
-    //                 ->action('Notification Action', url('/'))
-    //                 ->line('Thank you for using our application!');
-    // }
+    /**
+     * Get the mail representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
+    public function toMail($notifiable)
+    {
+        return (new MailMessage)
+            ->line('The introduction to the notification.')
+            ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
+    }
 
     /**
      * Get the array representation of the notification.
