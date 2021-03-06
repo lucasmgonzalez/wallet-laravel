@@ -60,7 +60,10 @@ class Balance implements Arrayable
 
         // Calculate current money amount
         if ($transactions->count() > 0) {
-            $money = $transactions->calculateMoneyForUser($user, $balance->money);
+            $money = $transactions->calculateMoneyForUser(
+                $user,
+                $balance->money
+            );
 
             $balance = new static($money);
 

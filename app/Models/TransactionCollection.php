@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class TransactionCollection extends Collection
 {
-    public function calculateMoneyForUser(User $user, ?Money $money = null): Money
+    public function calculateMoneyForUser(User $user, ?Money $initial = null): Money
     {
         return $this->filter(
             fn ($transaction) => in_array(
@@ -25,7 +25,7 @@ class TransactionCollection extends Collection
                 }
                 return $acc;
             },
-            $money ?? new Money(0)
+            $initial ?? new Money(0)
         );
     }
 }

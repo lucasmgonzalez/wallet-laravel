@@ -17,12 +17,12 @@ class BalanceTest extends TestCase
     {
         [$payer, $payee] = User::factory()->count(2)->create();
 
+        // Creating some deposits transactions
         $transactions = Transaction::factory()
             ->count(10)
             ->deposit()
-            ->create([
-                'payee_id' => $payee->id
-            ]);
+            ->to($payee)
+            ->create();
 
         $total = $transactions->calculateMoneyForUser($payee);
 

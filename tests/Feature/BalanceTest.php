@@ -15,7 +15,7 @@ class BalanceTest extends TestCase
 
     public function testCanRetrieveUserBalance()
     {
-        [$user] = User::factory()->count(1)->create();
+        $user = User::factory()->create();
 
         // Adding money to payer
         Transaction::makeDeposit(new Money(100), $user);
