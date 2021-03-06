@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\BalanceController;
 use App\Http\Controllers\API\TransactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::get('/{user}/balance', BalanceController::class);
 
 Route::post('/transaction', TransactionController::class);

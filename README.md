@@ -15,5 +15,9 @@
 - Refatorar TransactionController -  Remover lógica de validação e criação de transação
 - Testes Testes Testes
 - Documentação
+  - Explicar como rodar o projeto localmente
+  - Explicar como subir projeto pra produção ?
+    - Vercel?
+    - Dockerfile?
 - Endpoint de depósito?
 - Soma de transações para um usuário?
