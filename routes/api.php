@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{user}/balance', BalanceController::class);
+Route::get('user/{user}/balance', BalanceController::class)->name('user.balance');
 
-Route::post('/transaction', TransactionController::class);
+Route::post('/transaction', TransactionController::class)->name('transaction');

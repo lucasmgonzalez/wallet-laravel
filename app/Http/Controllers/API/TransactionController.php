@@ -38,9 +38,9 @@ class TransactionController extends Controller
         }
 
         // Check Transaction Authorizer Service
-        $authorizer = app(MockTransactionAuthorizerService::class);
+        $authorizerService = app(MockTransactionAuthorizerService::class);
 
-        if (!$authorizer->authorize($transaction)) {
+        if (!$authorizerService->authorize($transaction)) {
             throw new TransactionNotAuthorized();
         }
 

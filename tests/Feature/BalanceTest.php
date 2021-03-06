@@ -20,7 +20,7 @@ class BalanceTest extends TestCase
         // Adding money to payer
         Transaction::makeDeposit(new Money(100), $user);
 
-        $response = $this->get("/{$user->id}/balance");
+        $response = $this->get(route("user.balance", [ 'user'=> $user ]));
 
         $response->assertStatus(200);
         $response->assertJson([

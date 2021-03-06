@@ -23,7 +23,7 @@ class TransactionTest extends TestCase
         // Make a deposit to payer
         Transaction::makeDeposit(new Money(100), $payer);
 
-        $response = $this->postJson('/transaction', [
+        $response = $this->postJson(route('transaction'), [
             "value" => 100,
             "payer" => $payer->id,
             "payee" => $payee->id
@@ -41,7 +41,7 @@ class TransactionTest extends TestCase
         // Adding money to payer
         Transaction::makeDeposit(new Money(100), $payer);
 
-        $response = $this->postJson('/transaction', [
+        $response = $this->postJson(route('transaction'), [
             "value" => 100,
             "payer" => $payer->id,
             "payee" => $payee->id
@@ -60,7 +60,7 @@ class TransactionTest extends TestCase
         // Adding money to payer
         Transaction::makeDeposit(new Money(100), $payer);
 
-        $response = $this->postJson('/transaction', [
+        $response = $this->postJson(route('transaction'), [
             "value" => 100,
             "payer" => $payer->id,
             "payee" => $payee->id
@@ -79,7 +79,7 @@ class TransactionTest extends TestCase
         // Adding money to payer
         Transaction::makeDeposit(new Money(100), $payer);
 
-        $response = $this->postJson('/transaction', [
+        $response = $this->postJson(route('transaction'), [
             "value" => 100,
             "payer" => $payer->id,
             "payee" => $payee->id
@@ -93,7 +93,7 @@ class TransactionTest extends TestCase
     {
         [$payer, $payee] = User::factory()->count(2)->create();
 
-        $response = $this->postJson('/transaction', [
+        $response = $this->postJson(route('transaction'), [
             "value" => 100,
             "payer" => $payer->id,
             "payee" => $payee->id
