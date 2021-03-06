@@ -24,8 +24,10 @@ class BalanceTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertJson([
-            'amount' => 100,
-            'currency' => 'BRL'
+            'data' => [
+                'amount' => 100,
+                'currency' => 'BRL'
+            ]
         ]);
     }
 }

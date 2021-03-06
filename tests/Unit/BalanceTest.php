@@ -17,14 +17,14 @@ class BalanceTest extends TestCase
     {
         [$payer, $payee] = User::factory()->count(2)->create();
 
-        $transactions = Transaction::factory()->count(10)->create([
-            'payer_id' => $payer->id,
-            'payee_id' => $payee->id
-        ]);
+        $transactions = Transaction::factory()
+            ->count(10)
+            ->deposit()
+            ->create([
+                'payee_id' => $payee->id
+            ]);
 
-        $total = $transactions->reduce(function ($acc, $transaction) {
-            return $acc->sum($transaction->money);
-        }, new Money(0, 'BRL'));
+        $total = $transactions->calculateMoneyForUser($payee);
 
         $balance = Balance::buildFromUser($payee);
 

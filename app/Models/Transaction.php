@@ -66,4 +66,10 @@ class Transaction extends Model
 
         return $transaction;
     }
+
+    // Custom Collection
+    public function newCollection(array $models = [])
+    {
+        return new TransactionCollection($models);
+    }
 }
