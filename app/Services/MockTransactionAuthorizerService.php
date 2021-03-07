@@ -3,9 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\MockTransactionAuthorizerError;
-use App\Exceptions\TransactionNotAuthorized;
 use App\Models\Transaction;
-use Exception;
 use Illuminate\Support\Facades\Http;
 
 class MockTransactionAuthorizerService

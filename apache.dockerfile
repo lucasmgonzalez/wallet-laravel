@@ -8,7 +8,7 @@ COPY . /app
 RUN composer install
 
 # Application
-FROM php:apache
+FROM php:8-apache
 
 COPY --from=build /app /var/www
 WORKDIR /var/www

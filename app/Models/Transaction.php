@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Transaction\Collection as TransactionCollection;
+use App\Models\Transaction\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -56,13 +58,7 @@ class Transaction extends Model
 
     public static function makeDeposit(Money $money, User $payee): Transaction
     {
-        $transaction = new Transaction();
-
-        $transaction->money = $money;
-        $transaction->payer_id = null;
-        $transaction->payee_id = $payee->id;
-
-        $transaction->save();
+        $transaction = Factory::new()->money($money)->deposit()->payee($payee)->create();
 
         return $transaction;
     }

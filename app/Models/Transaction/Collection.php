@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Transaction;
 
-use Illuminate\Database\Eloquent\Collection;
+use App\Models\Money;
+use App\Models\Transaction;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Collection as BaseCollection;
 
-class TransactionCollection extends Collection
+class Collection extends BaseCollection
 {
     public function calculateMoneyForUser(User $user, ?Money $initial = null): Money
     {
