@@ -19,8 +19,9 @@ services:
       - "REDIS_HOST=redis"
       - "REDIS_PASSWORD=null"
       - "REDIS_PORT=6379"
+      # - "XDEBUG_CONFIG=remote_host=host.docker.internal remote_port=9000 remote_enable=1"
     ports:
-      - 8080:80
+      - 80:80
 
   database:
     image: mysql:latest

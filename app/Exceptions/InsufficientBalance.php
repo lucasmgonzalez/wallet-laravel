@@ -2,8 +2,8 @@
 
 namespace App\Exceptions;
 
+use App\Exceptions\Traits\ApiRenderable;
 use Exception;
-use Illuminate\Http\Request;
 
 class InsufficientBalance extends Exception
 {

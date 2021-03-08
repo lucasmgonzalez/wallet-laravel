@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Exceptions;
+namespace App\Exceptions\Traits;
 
-use Exception;
 use Illuminate\Http\Request;
 
 trait ApiRenderable

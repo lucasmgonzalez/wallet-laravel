@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use App\Exceptions\Traits\ApiRenderable;
 
 class UserTypeCannotTransferMoney extends Exception
 {

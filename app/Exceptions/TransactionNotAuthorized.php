@@ -3,7 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Http\Request;
+use App\Exceptions\Traits\ApiRenderable;
 
 class TransactionNotAuthorized extends Exception
 {
