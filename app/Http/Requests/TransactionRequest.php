@@ -29,7 +29,7 @@ class TransactionRequest extends FormRequest
         $userClass = User::class;
 
         return [
-            'value' => ['required', 'numeric', 'min:1'],
+            'value' => ['required', 'numeric', 'integer', 'min:1'],
             'payer' => ['required', "exists:{$userClass},id"],
             'payee' => ['required', "exists:{$userClass},id"]
         ];
