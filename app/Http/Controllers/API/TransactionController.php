@@ -29,6 +29,6 @@ class TransactionController extends Controller
             $payee
         );
 
-        return response()->json(['message' => 'success']);
+        return response()->json(['message' => 'success'], 201);
     }
 }

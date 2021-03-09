@@ -42,11 +42,6 @@ class TransactionFactory extends Factory
         });
     }
 
-    public function deposit()
-    {
-        return $this->payer(null);
-    }
-
     public function payer(?User $user)
     {
         return $this->state(function (array $attributes) use ($user) {
@@ -56,11 +51,6 @@ class TransactionFactory extends Factory
         });
     }
 
-    public function from(User $user)
-    {
-        return $this->payer($user);
-    }
-
     public function payee(User $user)
     {
         return $this->state(function (array $attributes) use ($user) {
@@ -68,6 +58,16 @@ class TransactionFactory extends Factory
                 'payee_id' => $user->id
             ];
         });
+    }
+
+    public function deposit()
+    {
+        return $this->payer(null);
+    }
+
+    public function from(User $user)
+    {
+        return $this->payer($user);
     }
 
     public function to(User $user)

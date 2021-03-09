@@ -83,7 +83,7 @@ class TransactionTest extends TestCase
             "payee" => $payee->id
         ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
         $response->assertJson(['message' => 'success']);
     }
 
@@ -108,7 +108,7 @@ class TransactionTest extends TestCase
             "payee" => $payee->id
         ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
         $response->assertJson(['message' => 'success']);
     }
 
@@ -134,7 +134,7 @@ class TransactionTest extends TestCase
             "payee" => $payee->id
         ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
         $response->assertJson(['message' => 'success']);
     }
 
@@ -225,7 +225,7 @@ class TransactionTest extends TestCase
             "payee" => $payee->id
         ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
         $response->assertDontSeeText(MockNotifierError::class);
     }
 }
