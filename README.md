@@ -97,8 +97,8 @@ php artisan test --testsuite=Feature
 
 
 ## To Do
-- Locking User for transaction while another is being made. This will ensure that there will be no concurrency dispute over an User balance.
-- Application Error Code. Build a map of Application exception and Error codes.
+- Locking User for any transaction while another is being made. This will ensure that there will be no concurrency dispute over an User balance.
+- Application Error Code. Build a map of Application exceptions to Error codes.
 - Log Events and errors. Maybe add a uuid to the request to be able to follow the request's path throughout the application
 - How to run for Vercel 
 - Refactoring tests

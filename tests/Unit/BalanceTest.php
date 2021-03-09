@@ -15,7 +15,7 @@ class BalanceTest extends TestCase
 
     public function test_can_retrieve_balance_from_user()
     {
-        [$payer, $payee] = User::factory()->count(2)->create();
+        $payee = User::factory()->create();
 
         // Creating some deposits transactions
         $transactions = Transaction::factory()
