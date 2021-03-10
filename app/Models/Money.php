@@ -115,6 +115,11 @@ class Money implements Castable
         return new Money($newAmount, $this->currency);
     }
 
+    public function __toString()
+    {
+        return "{$this->amount} {$this->currency}";
+    }
+
     // Castable
     /**
      * Declaring Casting Class

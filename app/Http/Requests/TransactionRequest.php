@@ -15,7 +15,7 @@ class TransactionRequest extends FormRequest
     public function authorize()
     {
         // Check if payer is the user making the request.
-
+        
         return true;
     }
 
