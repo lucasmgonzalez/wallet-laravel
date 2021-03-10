@@ -105,3 +105,4 @@ php artisan test --testsuite=Feature
 - Add a deposit endpoint
 - Add User authentication and authorization
 - Create User subclasses for NaturalPerson and JuridicalPerson
+- Create more than one type of transaction
