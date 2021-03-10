@@ -6,6 +6,7 @@ use App\BusinessServices\TransactionService;
 use App\Exceptions\InsufficientBalance;
 use App\Exceptions\MockTransactionAuthorizerError;
 use App\Exceptions\TransactionNotAuthorized;
+use App\Exceptions\UserLockedForTransaction;
 use App\Exceptions\UserTypeCannotTransferMoney;
 use App\Models\Transaction;
 use App\Models\User;
@@ -13,6 +14,7 @@ use App\Services\MockNotifierService;
 use App\Services\MockTransactionAuthorizerService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Cache;
 use Mockery;
 use Mockery\MockInterface;
 use Tests\TestCase;
@@ -127,6 +129,35 @@ class TransactionServiceTest extends TestCase
         $serviceMock = $this->mockAuthorizerServiceErrorResponse();
 
         $transactionMock = Transaction::factory()->make();
+
+        // Adding funds to payer
+        Transaction::factory()
+            ->money($transactionMock->money)
+            ->payee($transactionMock->payer)
+            ->deposit()
+            ->create();
+
+        $transactionService = new TransactionService($serviceMock);
+
+        $transaction = $transactionService->makeTransactionBetweenUsers(
+            $transactionMock->money->amount,
+            $transactionMock->payer,
+            $transactionMock->payee,
+        );
+    }
+    public function test_cannot_make_transaction_if_user_is_locked()
+    {
+        $this->mockNotifierSuccessfulResponse();
+        $serviceMock = $this->mockAuthorizerServiceSuccessfulResponse();
+
+        $this->expectException(UserLockedForTransaction::class);
+
+        $transactionMock = Transaction::factory()->make();
+
+        // Mock a locked payer
+        Cache::shouldReceive('has')
+            ->with("transaction-lock-{$transactionMock->payer->id}")
+            ->andReturn(true);
 
         // Adding funds to payer
         Transaction::factory()
