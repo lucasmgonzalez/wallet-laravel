@@ -56,7 +56,7 @@ class BalanceSnapshot
      */
     public static function set(string $key, Balance $balance, Carbon $created_at)
     {
-        return Cache::put($key, [
+        return Cache::forever($key, [
             'balance' => $balance,
             'created_at' => $created_at
         ]);
