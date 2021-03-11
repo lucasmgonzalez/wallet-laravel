@@ -8,12 +8,12 @@ trait ApiRenderable
 {
     public function render(Request $request)
     {
-        $content = $request->expectsJson()
-            ? json_encode([
+        if ($request->expectsJson()) {
+            return response()->json([
                 'type' => static::class,
                 'message' => $this->message
-            ]) : $this->message;
+            ], 422);
+        }
 
-        return response($content, 422);
     }
 }
