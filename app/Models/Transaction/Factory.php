@@ -13,6 +13,7 @@ class Factory
     public function __construct()
     {
         $this->instance = new Transaction();
+        $this->instance->id = uniqid();
     }
 
     public static function new(): Factory

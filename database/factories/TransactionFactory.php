@@ -25,6 +25,7 @@ class TransactionFactory extends Factory
     {
 
         return [
+            'id' => uniqid(),
             'amount' => $this->faker->numberBetween(1, 100),
             'currency' => 'BRL',
             'payer_id' => User::factory(),
