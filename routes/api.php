@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\API\BalanceController;
+use App\Http\Controllers\API\User\BalanceController;
 use App\Http\Controllers\API\TransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;

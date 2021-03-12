@@ -5,6 +5,7 @@ namespace App\Models\Transaction;
 use App\Models\Money;
 use App\Models\Transaction;
 use App\Models\User;
+use Ramsey\Uuid\Uuid;
 
 class Factory
 {
@@ -13,7 +14,7 @@ class Factory
     public function __construct()
     {
         $this->instance = new Transaction();
-        $this->instance->id = uniqid();
+        $this->instance->id = Uuid::uuid4();
     }
 
     public static function new(): Factory

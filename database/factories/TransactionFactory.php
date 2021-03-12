@@ -6,6 +6,7 @@ use App\Models\Money;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Ramsey\Uuid\Uuid;
 
 class TransactionFactory extends Factory
 {
@@ -25,7 +26,7 @@ class TransactionFactory extends Factory
     {
 
         return [
-            'id' => uniqid(),
+            'id' => Uuid::uuid4(),
             'amount' => $this->faker->numberBetween(1, 100),
             'currency' => 'BRL',
             'payer_id' => User::factory(),
