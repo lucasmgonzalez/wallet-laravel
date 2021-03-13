@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\API\User\BalanceController;
+use App\Http\Controllers\API\Me\BalanceController;
+use App\Http\Controllers\API\User\BalanceController as UserBalanceController;
 use App\Http\Controllers\API\TransactionController;
+use App\Http\Controllers\API\Me\IndexController as MeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('user/{user}/balance', BalanceController::class)->name('user.balance');
+Route::get('user/{user}/balance', UserBalanceController::class)
+    ->name('user.balance');
 
 // Route::middleware('auth:sanctum')
 //     ->post('/transaction', TransactionController::class)
@@ -27,11 +30,9 @@ Route::post('/transaction', TransactionController::class)
 Route::prefix('me')
     ->middleware('auth:sanctum')
     ->group(function () {
-        Route::get('/', function (Request $request) {
-            return $request->user();
-        });
+        Route::get('/', MeController::class)
+            ->name('me');
 
-        Route::get('balance', function (Request $request) {
-            return $request->user()->balance();
-        });
+        Route::get('balance', BalanceController::class)
+            ->name('me.balance');
     });
